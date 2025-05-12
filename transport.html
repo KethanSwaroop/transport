@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftRide Transport Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(14,165,233,0.1) 0%, rgba(139,92,246,0.1) 100%);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center">
+                        <i class="fas fa-shuttle-van text-primary-600 dark:text-primary-400 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900 dark:text-white">Swift<span class="text-primary-600 dark:text-primary-400">Ride</span></span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 font-medium transition-all">Home</a>
+                    <a href="#services" class="text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 font-medium transition-all">Services</a>
+                    <a href="#pricing" class="text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 font-medium transition-all">Pricing</a>
+                    <a href="#about" class="text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 font-medium transition-all">About</a>
+                    <a href="#contact" class="text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 font-medium transition-all">Contact</a>
+                </nav>
+                
+                <!-- Right side buttons -->
+                <div class="flex items-center space-x-4">
+                    <!-- Dark mode toggle -->
+                    <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2.5">
+                        <i id="theme-icon" class="fas fa-moon"></i>
+                    </button>
+                    
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-button" type="button" class="md:hidden text-gray-500 hover:text-gray-900 dark:hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                    
+                    <!-- Book now button (desktop) -->
+                    <a href="#booking" class="hidden md:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">Home</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">Services</a>
+                <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">Pricing</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">About</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">Contact</a>
+                <a href="#booking" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary-600 hover:bg-primary-700">Book Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                        Reliable <span class="text-primary-600 dark:text-primary-400">Transport</span> Services
+                    </h1>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                        SwiftRide offers premium transportation solutions tailored to your needs. Whether it's daily commutes, special events, or corporate travel, we've got you covered.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#booking" class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-md shadow-sm transition-all text-center">
+                            Book a Ride
+                        </a>
+                        <a href="#services" class="px-6 py-3 border border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 font-medium rounded-md shadow-sm hover:bg-primary-50 dark:hover:bg-gray-800 transition-all text-center">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Luxury transport vehicle" 
+                         class="rounded-xl shadow-xl w-full h-auto object-cover">
+                    <div class="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg w-3/4">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900 p-3 rounded-lg">
+                                <i class="fas fa-star text-primary-600 dark:text-primary-400 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Customer Rating</p>
+                                <p class="text-lg font-bold text-gray-900 dark:text-white">4.9/5.0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our <span class="text-primary-600 dark:text-primary-400">Services</span></h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    We provide a range of transportation services to meet all your needs. From daily commutes to special events, we ensure comfort, safety, and reliability.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service cards will be dynamically generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Simple, Transparent <span class="text-primary-600 dark:text-primary-400">Pricing</span></h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    No hidden fees. Choose the plan that works best for your transportation needs.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Pricing cards will be dynamically generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">What Our <span class="text-primary-600 dark:text-primary-400">Clients</span> Say</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Don't just take our word for it. Here's what our customers have to say about our services.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial cards will be dynamically generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="mb-12 lg:mb-0 order-last lg:order-first">
+                    <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Our team" 
+                         class="rounded-xl shadow-xl w-full h-auto object-cover">
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">About <span class="text-primary-600 dark:text-primary-400">SwiftRide</span></h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        Founded in 2010, SwiftRide has grown from a small local service to a leading regional transportation provider. Our mission is to deliver safe, reliable, and comfortable transportation solutions.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0 text-primary-600 dark:text-primary-400 mt-1">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-lg text-gray-600 dark:text-gray-300">
+                                    <span class="font-bold text-gray-900 dark:text-white">100+ Vehicles</span> in our modern fleet
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0 text-primary-600 dark:text-primary-400 mt-1">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-lg text-gray-600 dark:text-gray-300">
+                                    <span class="font-bold text-gray-900 dark:text-white">50,000+ Satisfied</span> customers served
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0 text-primary-600 dark:text-primary-400 mt-1">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-lg text-gray-600 dark:text-gray-300">
+                                    <span class="font-bold text-gray-900 dark:text-white">24/7 Support</span> for all your needs
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20 bg-primary-600 dark:bg-primary-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="mb-12 lg:mb-0 text-white">
+                    <h2 class="text-3xl font-bold mb-6">Ready to <span class="text-secondary-300">Book</span> Your Ride?</h2>
+                    <p class="text-lg text-primary-100 mb-8">
+                        Fill out our simple booking form and we'll get back to you within 30 minutes to confirm your reservation.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-primary-700 dark:bg-primary-900 p-2 rounded-lg">
+                                <i class="fas fa-phone-alt text-primary-200"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-primary-200">Call us anytime</p>
+                                <p class="text-lg font-bold">(555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-primary-700 dark:bg-primary-900 p-2 rounded-lg">
+                                <i class="fas fa-envelope text-primary
